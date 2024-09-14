@@ -1,4 +1,4 @@
-package oshiru.springboot_template;
+package oshiru.springboot_template.logging;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.boot.context.event.ApplicationFailedEvent;
@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class LifecycleLogging implements ServletContextListener {
+public class ApplicationLifecycleLogging implements ServletContextListener {
     /**
      * DBCP初期化前
      */
