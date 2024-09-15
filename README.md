@@ -12,6 +12,10 @@ Log when Application is starting up, started up, shutdown, failed to start.
 
 Log around(Before and After) BEGIN, COMMIT, ROLLBACK.
 
+### Bean IN/OUT Logging
+
+Log bean IN/OUT.
+
 ### Request Context
 
 Request context data(e.g. Request received date) handling using Filter.
