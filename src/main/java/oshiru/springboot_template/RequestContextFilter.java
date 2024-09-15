@@ -14,6 +14,9 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * Feature: Request Context
+ */
 @Component
 public class RequestContextFilter implements Filter {
 

@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Feature: Transaction Logging
+ */
 @Slf4j
 public class TransactionLogging {
     /**

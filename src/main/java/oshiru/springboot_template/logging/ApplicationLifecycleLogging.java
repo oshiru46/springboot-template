@@ -12,6 +12,9 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Feature: Application Lifecycle Logging
+ */
 @Slf4j
 @Component
 public class ApplicationLifecycleLogging implements ServletContextListener {
