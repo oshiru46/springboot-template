@@ -1,6 +1,7 @@
 package oshiru.springboot_template;
 
 import java.util.Date;
+import java.util.Stack;
 
 import lombok.Data;
 
@@ -23,4 +24,7 @@ public class RequestContext {
     private String requestId;
     /** Request received date. */
     private Date requestDate;
+
+    /** Feature: Bean Name Stacktrace */
+    private Stack<String> beanStack = new Stack<>();
 }

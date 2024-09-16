@@ -16,6 +16,10 @@ Log around(Before and After) BEGIN, COMMIT, ROLLBACK.
 
 Log bean IN/OUT.
 
+### Bean Name Stacktrace
+
+Bean name stacktrace.
+
 ### Request Context
 
 Request context data(e.g. Request received date) handling using Filter.

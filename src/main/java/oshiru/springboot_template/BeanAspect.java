@@ -20,12 +20,17 @@ public class BeanAspect {
         /** Feature: Bean IN/OUT Logging */
         log.info("**Oshiru** IN {}.{}()", className, methodName);
 
+        /** Feature: Bean Name Stacktrace */
+        RequestContext.current().getBeanStack().push(className + "." + methodName + "()");
+
         try {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
             log.info("Exception!", throwable);
             throw throwable;
         } finally {
+            /** Feature: Bean Name Stacktrace */
+            RequestContext.current().getBeanStack().pop();
             /** Feature: Bean IN/OUT Logging */
             log.info("**Oshiru** OUT {}.{}()", className, methodName);
         }
