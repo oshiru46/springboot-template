@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <!-- ログのフォーマットを定義 -->
+    <Appenders>
+        <!-- コンソールにログを出力するAppender -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %msg %logger{36}%n"/>
+        </Console>
+    </Appenders>
+
+    <!-- ログレベルと出力先を定義 -->
+    <Loggers>
+        <!-- ルートロガーの設定（全体に適用されるデフォルトのログレベル） -->
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+
+        <!-- パッケージごとのロガーの設定 -->
+        <Logger name="oshiru.springboot_template" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>

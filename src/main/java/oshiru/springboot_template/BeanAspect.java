@@ -5,12 +5,13 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.slf4j.Slf4j;
+import oshiru.springboot_template.logging.Logger;
+import oshiru.springboot_template.logging.LoggerFactory;
 
-@Slf4j
 @Aspect
 @Component
 public class BeanAspect {
+    private static final Logger log = LoggerFactory.getLogger(BeanAspect.class);
 
     @Around("execution(* oshiru.springboot_template.*.*(..))")
     public Object beanAround(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -18,10 +19,12 @@ public class BeanAspect {
         String methodName = joinPoint.getSignature().getName();
 
         /** Feature: Bean IN/OUT Logging */
-        log.info("**Oshiru** IN {}.{}()", className, methodName);
+        log.methodIn(className, methodName);
 
         /** Feature: Bean Name Stacktrace */
-        RequestContext.current().getBeanStack().push(className + "." + methodName + "()");
+        RequestContext.currentOptional().ifPresent(ctx -> {
+            ctx.getBeanStack().push(className + "." + methodName + "()");
+        });
 
         try {
             return joinPoint.proceed();
@@ -30,9 +33,11 @@ public class BeanAspect {
             throw throwable;
         } finally {
             /** Feature: Bean Name Stacktrace */
-            RequestContext.current().getBeanStack().pop();
+            RequestContext.currentOptional().ifPresent(ctx -> {
+                ctx.getBeanStack().pop();
+            });
             /** Feature: Bean IN/OUT Logging */
-            log.info("**Oshiru** OUT {}.{}()", className, methodName);
+            log.methodOut(className, methodName);
         }
     }
 }

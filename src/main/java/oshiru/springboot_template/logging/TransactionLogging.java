@@ -13,13 +13,12 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * Feature: Transaction Logging
  */
-@Slf4j
 public class TransactionLogging {
+    private static final Logger log = LoggerFactory.getLogger(TransactionLogging.class);
+
     /**
      * BEGIN, COMMIT, ROLLBACK前後にログ出力をするカスタムTransactionManager
      */
@@ -34,24 +33,24 @@ public class TransactionLogging {
         @Override
         public @NonNull TransactionStatus getTransaction(@Nullable TransactionDefinition definition) {
             // BEGIN TRANSACTIONとログに出してはいるが、実際にBEGINで開始しているとは限らない。
-            log.info("**Oshiru** Before BEGIN TRANSACTION");
+            log.debug("[Aspect] Before BEGIN TRANSACTION");
             TransactionStatus status = delegate.getTransaction(definition);
-            log.info("**Oshiru** After BEGIN TRANSACTION");
+            log.debug("[Aspect] After BEGIN TRANSACTION");
             return status;
         }
 
         @Override
         public void commit(@NonNull TransactionStatus status) {
-            log.info("**Oshiru** Before COMMIT");
+            log.debug("[Aspect] Before COMMIT");
             delegate.commit(status);
-            log.info("**Oshiru** After COMMIT");
+            log.debug("[Aspect] After COMMIT");
         }
 
         @Override
         public void rollback(@NonNull TransactionStatus status) {
-            log.info("**Oshiru** Before ROLLBACK");
+            log.debug("[Aspect] Before ROLLBACK");
             delegate.rollback(status);
-            log.info("**Oshiru** After ROLLBACK");
+            log.debug("[Aspect] After ROLLBACK");
         }
     }
 
