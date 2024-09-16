@@ -34,7 +34,7 @@ public class ApplicationLifecycleLogging implements ServletContextListener {
     static class CatchAll implements ApplicationListener<SpringApplicationEvent> {
         @Override
         public void onApplicationEvent(@NonNull SpringApplicationEvent event) {
-            log.info("**Oshiru**　Caught ApplicationEvent: {}", event.getClass().getSimpleName());
+            log.info("**Oshiru** Caught ApplicationEvent: {}", event.getClass().getSimpleName());
         }
     }
 
