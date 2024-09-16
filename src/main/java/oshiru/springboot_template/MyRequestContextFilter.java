@@ -25,7 +25,7 @@ public class MyRequestContextFilter implements Filter {
             throws IOException, ServletException {
         try {
             HttpServletRequest httpRequest = (HttpServletRequest) request;
-            RequestContext context = RequestContext.current();
+            RequestContext context = RequestContext.init();
 
             context.setRequestDate(new Date());
 
