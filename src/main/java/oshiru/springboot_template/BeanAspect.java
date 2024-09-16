@@ -1,5 +1,7 @@
 package oshiru.springboot_template;
 
+import java.util.Stack;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -30,6 +32,15 @@ public class BeanAspect {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
             log.info("Exception!", throwable);
+            /** Feature: Bean Name Stacktrace */
+            RequestContext.currentOptional().ifPresent(ctx -> {
+                if (ctx.getBeanStackLastExceptionThrown() == null) {
+                    ctx.setBeanStackLastExceptionThrown(new Stack<>());
+                    for (String beanName : ctx.getBeanStack()) {
+                        ctx.getBeanStackLastExceptionThrown().push(beanName);
+                    }
+                }
+            });
             throw throwable;
         } finally {
             /** Feature: Bean Name Stacktrace */

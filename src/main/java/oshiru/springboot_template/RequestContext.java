@@ -50,4 +50,6 @@ public class RequestContext {
 
     /** Feature: Bean Name Stacktrace */
     private Stack<String> beanStack = new Stack<>();
+    /** Feature: Bean Name Stacktrace */
+    private Stack<String> beanStackLastExceptionThrown;
 }
