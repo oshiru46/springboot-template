@@ -31,7 +31,8 @@ public class BeanAspect {
         try {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
-            log.info("Exception!", throwable);
+            log.debug("Exception! class: {}, message: {}",
+                    throwable.getClass().getName(), throwable.getMessage());
             /** Feature: Bean Name Stacktrace */
             RequestContext.currentOptional().ifPresent(ctx -> {
                 if (ctx.getBeanStackLastExceptionThrown() == null) {

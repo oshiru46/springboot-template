@@ -61,9 +61,12 @@ RequestScope bean
 
 Background job with dynamic delay decision and graceful shutdown.
 
+### Retry Request
+
+Retry to process request.
+
 ## memo
 ### 追加したいもの
-- log backtrace info
 - entity to record(readonly, free from entity management)
 - multi module project, with multi format packaging(jar/war)
 - fork async job(with handover some data)

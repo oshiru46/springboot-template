@@ -34,4 +34,13 @@ public class OshiruController {
 
         return "never reach here";
     }
+
+    @GetMapping("/retry")
+    public String retry() {
+        log.debug("at Controller");
+
+        this.oshiruService.giveup();
+
+        return "reach here after give up 3 times";
+    }
 }
