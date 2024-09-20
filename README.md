@@ -57,9 +57,12 @@ RequestScope bean
   - 非Beanでは参照できない
   - コンストラクタインジェクションを採用している場合、コンストラクタの引数が増えて若干煩雑になる
 
+### Background Job
+
+Background job with dynamic delay decision and graceful shutdown.
+
 ## memo
 ### 追加したいもの
-- background periodic job(kick, graceful shutdown)
 - log backtrace info
 - entity to record(readonly, free from entity management)
 - multi module project, with multi format packaging(jar/war)
