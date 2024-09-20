@@ -14,4 +14,9 @@ public class OshiruService {
     public void test() {
         log.debug("at Service");
     }
+
+    public void causeError() {
+        log.debug("throwing exception");
+        throw new RuntimeException("error!");
+    }
 }

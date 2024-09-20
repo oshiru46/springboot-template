@@ -25,4 +25,13 @@ public class OshiruController {
 
         return "Called!!";
     }
+
+    @GetMapping("/causeError")
+    public String causeError() {
+        log.debug("at Controller");
+
+        this.oshiruService.causeError();
+
+        return "never reach here";
+    }
 }
